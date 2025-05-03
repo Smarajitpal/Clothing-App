@@ -3,7 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchAddress = createAsyncThunk(
   "address/fetchAddress",
   async (uId) => {
-    const response = await fetch(`https://clothing-app-mu.vercel.app/${uId}`);
+    const response = await fetch(
+      `https://clothing-app-mu.vercel.app/address/${uId}`
+    );
     const data = response.json();
     return data;
   }
