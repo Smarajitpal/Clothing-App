@@ -19,6 +19,9 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
+app.get("/", (req, res) => {
+  res.send("Hello, Express!");
+});
 
 app.get("/clothes", async (req, res) => {
   try {
