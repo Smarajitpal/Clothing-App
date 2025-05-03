@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchWishlist = createAsyncThunk(
   "wishlist/fetchWishlist",
   async () => {
-    const response = await fetch("http://localhost:3001/wishlist");
+    const response = await fetch("https://clothing-app-mu.vercel.app/wishlist");
     const data = response.json();
     return data;
   }
@@ -12,11 +12,14 @@ export const fetchWishlist = createAsyncThunk(
 export const addWishlistProductAsync = createAsyncThunk(
   "wishlist/addWishlistProductAsync",
   async (proData) => {
-    const response = await fetch("http://localhost:3001/wishlist", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(proData),
-    });
+    const response = await fetch(
+      "https://clothing-app-mu.vercel.app/wishlist",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(proData),
+      }
+    );
     const data = response.json();
     return data;
   }
@@ -25,9 +28,12 @@ export const addWishlistProductAsync = createAsyncThunk(
 export const deleteWishlistProductAsync = createAsyncThunk(
   "wishlist/deleteWishlistProductAsync",
   async (pId) => {
-    const response = await fetch(`http://localhost:3001/wishlist/${pId}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://clothing-app-mu.vercel.app/wishlist/${pId}`,
+      {
+        method: "DELETE",
+      }
+    );
     const data = response.json();
     return data;
   }

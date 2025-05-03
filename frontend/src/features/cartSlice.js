@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchCart = createAsyncThunk("cart/fetchCart", async () => {
-  const response = await fetch("http://localhost:3001/cart");
+  const response = await fetch("https://clothing-app-mu.vercel.app/cart");
   const data = response.json();
   return data;
 });
@@ -9,7 +9,7 @@ export const fetchCart = createAsyncThunk("cart/fetchCart", async () => {
 export const addProductAsync = createAsyncThunk(
   "cart/addProductAsync",
   async (proData) => {
-    const response = await fetch("http://localhost:3001/cart", {
+    const response = await fetch("https://clothing-app-mu.vercel.app/cart", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(proData),
@@ -22,9 +22,12 @@ export const addProductAsync = createAsyncThunk(
 export const deleteProductAsync = createAsyncThunk(
   "cart/deleteProductAsync",
   async (pId) => {
-    const response = await fetch(`http://localhost:3001/cart/${pId}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://clothing-app-mu.vercel.app/cart/${pId}`,
+      {
+        method: "DELETE",
+      }
+    );
     const data = response.json();
     return data;
   }
@@ -32,11 +35,14 @@ export const deleteProductAsync = createAsyncThunk(
 export const updateProductAsync = createAsyncThunk(
   "cart/updateProductAsync",
   async (dataToUpdate) => {
-    const response = await fetch("http://localhost:3001/cart/quantityUpdate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(dataToUpdate),
-    });
+    const response = await fetch(
+      "https://clothing-app-mu.vercel.app/cart/quantityUpdate",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dataToUpdate),
+      }
+    );
     const data = await response.json();
     return data;
   }

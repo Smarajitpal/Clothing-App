@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchAddress = createAsyncThunk(
   "address/fetchAddress",
   async (uId) => {
-    const response = await fetch(`http://localhost:3001/address/${uId}`);
+    const response = await fetch(`https://clothing-app-mu.vercel.app/${uId}`);
     const data = response.json();
     return data;
   }
@@ -12,7 +12,7 @@ export const fetchAddress = createAsyncThunk(
 export const addAddressAsync = createAsyncThunk(
   "address/addAddressAsync",
   async (addressData) => {
-    const response = await fetch("http://localhost:3001/address", {
+    const response = await fetch("https://clothing-app-mu.vercel.app/address", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(addressData),
@@ -25,9 +25,12 @@ export const addAddressAsync = createAsyncThunk(
 export const deleteAddressAsync = createAsyncThunk(
   "address/deleteAddressAsync",
   async (addressId) => {
-    const response = await fetch(`http://localhost:3001/address/${addressId}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://clothing-app-mu.vercel.app/address/${addressId}`,
+      {
+        method: "DELETE",
+      }
+    );
     const data = response.json();
     return data;
   }
@@ -36,7 +39,7 @@ export const deleteAllAddressAsync = createAsyncThunk(
   "address/deleteAllAddressAsync",
   async (aUId) => {
     const response = await fetch(
-      `http://localhost:3001/address/users/${aUId}`,
+      `https://clothing-app-mu.vercel.app/address/users/${aUId}`,
       {
         method: "DELETE",
       }
@@ -50,7 +53,7 @@ export const updateAddressAsync = createAsyncThunk(
   "users/updateAddressAsync",
   async (addressData) => {
     const response = await fetch(
-      `http://localhost:3001/address/update/${addressData._id}`,
+      `https://clothing-app-mu.vercel.app/address/update/${addressData._id}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

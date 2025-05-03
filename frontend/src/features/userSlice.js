@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
-  const response = await fetch("http://localhost:3001/users");
+  const response = await fetch("https://clothing-app-mu.vercel.app/users");
   const data = response.json();
   return data;
 });
@@ -9,7 +9,7 @@ export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
 export const addUserAsync = createAsyncThunk(
   "users/addUserAsync",
   async (userData) => {
-    const response = await fetch("http://localhost:3001/users", {
+    const response = await fetch("https://clothing-app-mu.vercel.app/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
@@ -22,9 +22,12 @@ export const addUserAsync = createAsyncThunk(
 export const deleteUserAsync = createAsyncThunk(
   "users/deleteUserAsync",
   async (uId) => {
-    const response = await fetch(`http://localhost:3001/users/${uId}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://clothing-app-mu.vercel.app/users/${uId}`,
+      {
+        method: "DELETE",
+      }
+    );
     const data = response.json();
     return data;
   }
@@ -34,7 +37,7 @@ export const updateUserAsync = createAsyncThunk(
   "users/updateUserAsync",
   async (userData) => {
     const response = await fetch(
-      `http://localhost:3001/users/update/${userData._id}`,
+      `https://clothing-app-mu.vercel.app/users/update/${userData._id}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

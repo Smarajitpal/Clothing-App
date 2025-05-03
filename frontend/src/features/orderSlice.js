@@ -3,7 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchOrders = createAsyncThunk(
   "orders/fetchOrders",
   async (uId) => {
-    const response = await fetch(`http://localhost:3001/orders/${uId}`);
+    const response = await fetch(
+      `https://clothing-app-mu.vercel.app/orders/${uId}`
+    );
     const data = response.json();
     return data;
   }
@@ -12,7 +14,7 @@ export const fetchOrders = createAsyncThunk(
 export const addOrderAsync = createAsyncThunk(
   "orders/addOrderAsync",
   async (orderData) => {
-    const response = await fetch("http://localhost:3001/orders", {
+    const response = await fetch("https://clothing-app-mu.vercel.app/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(orderData),
@@ -24,9 +26,12 @@ export const addOrderAsync = createAsyncThunk(
 export const deleteOrderAsync = createAsyncThunk(
   "orders/deleteOrderAsync",
   async (oId) => {
-    const response = await fetch(`http://localhost:3001/orders/${oId}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://clothing-app-mu.vercel.app/orders/${oId}`,
+      {
+        method: "DELETE",
+      }
+    );
     const data = response.json();
     return data;
   }
