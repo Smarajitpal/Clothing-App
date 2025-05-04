@@ -40,7 +40,7 @@ export const deleteAllOrdersAsync = createAsyncThunk(
   "orders/deleteAllOrdersAsync",
   async (oUId) => {
     const response = await fetch(
-      `https://clothing-app-mu.vercel.app/address/users/${oUId}`,
+      `https://clothing-app-mu.vercel.app/orders/users/${oUId}`,
       {
         method: "DELETE",
       }
