@@ -9,7 +9,7 @@ import {
 
 const Address = () => {
   const { loggedInUser } = useSelector((state) => state.users);
-  const { address } = useSelector((state) => state.address);
+  const { address, status, error } = useSelector((state) => state.address);
   const dispatch = useDispatch();
   const [editAddress, setEditAddress] = useState(false);
   const [update, setUpdate] = useState(false);
@@ -201,6 +201,14 @@ const Address = () => {
           </form>
         )}
         <div>
+          {status === "loading" && (
+            <div className="text-center">
+              <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          )}
+          {error && <p>{error}</p>}
           {address && address.length > 0 ? (
             <ul className="list-group">
               {address.map((a) => (

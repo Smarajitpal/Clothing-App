@@ -155,7 +155,7 @@ const Cart = () => {
             </div>
             <div className="text-center mt-3">
               <button
-                className="btn btn-primary col-md-12 rounded-0"
+                className="btn btn-primary col-md-12 rounded-0 mb-3"
                 onClick={handleCheckout}
               >
                 Proceed To Checkout

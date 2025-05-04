@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Orders from "./Orders";
 import Address from "./Address";
 import { deleteAllAddressAsync } from "../features/addressSlice";
+import { deleteAllOrdersAsync } from "../features/orderSlice";
 
 const Profile = () => {
   const { loggedInUser } = useSelector((state) => state.users);
@@ -44,6 +45,7 @@ const Profile = () => {
     navigate("/product");
     dispatch(setLoggedInUser({ ...loggedInUser, isLoggedIn: false }));
     dispatch(deleteAllAddressAsync(loggedInUser._id));
+    dispatch(deleteAllOrdersAsync(loggedInUser._id));
     alert("User Deleted Successfully");
   };
 

@@ -99,6 +99,9 @@ export const addressSlice = createSlice({
         (a) => a._id !== action.payload.address._id
       );
     });
+    builder.addCase(deleteAllAddressAsync.fulfilled, (state, action) => {
+      state.address = [];
+    });
     builder.addCase(updateAddressAsync.fulfilled, (state, action) => {
       state.address = state.address.map((add) =>
         add._id === action.payload._id ? action.payload : add

@@ -36,6 +36,19 @@ export const deleteOrderAsync = createAsyncThunk(
     return data;
   }
 );
+export const deleteAllOrdersAsync = createAsyncThunk(
+  "orders/deleteAllOrdersAsync",
+  async (oUId) => {
+    const response = await fetch(
+      `https://clothing-app-mu.vercel.app/address/users/${oUId}`,
+      {
+        method: "DELETE",
+      }
+    );
+    const data = response.json();
+    return data;
+  }
+);
 
 export const orderSlice = createSlice({
   name: "orders",
@@ -69,6 +82,9 @@ export const orderSlice = createSlice({
       state.orders = state.orders.filter(
         (o) => o._id !== action.payload.order._id
       );
+    });
+    builder.addCase(deleteAllOrdersAsync.fulfilled, (state, action) => {
+      state.orders = [];
     });
   },
 });

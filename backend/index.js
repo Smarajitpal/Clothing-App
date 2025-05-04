@@ -332,6 +332,24 @@ app.delete("/orders/:orderId", async (req, res) => {
   }
 });
 
+app.delete("/orders/users/:userId", async (req, res) => {
+  const ordersIdToDelete = req.params.userId;
+  try {
+    const deletedOrders = await Order.deleteMany({
+      userId: ordersIdToDelete,
+    });
+    if (deletedOrders.deletedCount === 0) {
+      return res.status(404).json({ error: "No orders found for this user." });
+    }
+    res.status(200).json({
+      message: "Orders deleted successfully",
+      orders: deletedOrders,
+    });
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 const PORT = 3001;
 app.listen(PORT, () => {
   console.log("Server is running on port", PORT);
