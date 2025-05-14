@@ -10,6 +10,7 @@ import RegisterUser from "./components/RegisterUser";
 import Profile from "./components/UserProfile";
 import Orders from "./components/Orders";
 import OrderSummary from "./components/OrderSummary";
+import Address from "./components/Address";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/orderSummary" element={<OrderSummary />} />
+          <Route path="/address" element={<Address />} />
         </Routes>
       </Router>
     </div>

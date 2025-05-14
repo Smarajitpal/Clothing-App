@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAddress } from "../features/addressSlice";
 import { useEffect, useState } from "react";
 import { addOrderAsync } from "../features/orderSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { deleteProductAsync } from "../features/cartSlice";
 
 const OrderSummary = () => {
@@ -57,7 +57,7 @@ const OrderSummary = () => {
           <div className="bg-body-secondary container pt-2 pb-1 mb-3">
             <h5 className="text-secondary">DELIVERY ADDRESS</h5>
             <ul>
-              {address &&
+              {address.length > 0 ? (
                 address?.map((a) => (
                   <li
                     key={a._id}
@@ -82,7 +82,15 @@ const OrderSummary = () => {
                       </p>
                     </label>
                   </li>
-                ))}
+                ))
+              ) : (
+                <>
+                  <h2>No Address Available</h2>
+                  <Link to="/address" className="btn btn-primary">
+                    Add Address
+                  </Link>
+                </>
+              )}
             </ul>
           </div>
           <div className="bg-body-secondary container pt-2 pb-1 mb-3">
