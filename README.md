@@ -1,0 +1,2 @@
+This is a Clothes shopping app. Here we can search with specific category or rating and also can be sorted according to the price. Here we can add, remove a cloth to, from cart and wishlist. Cart and wishlist pages are updated accordingly. Tech stacks used here are:- MERN, Redux for state management, Bootstrap for styling.
+This clothing app is hosted on vercel and deployed link is(https://clothing-app-i99a.vercel.app/)
