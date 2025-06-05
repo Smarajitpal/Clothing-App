@@ -36,7 +36,7 @@ const Header = () => {
                 color: "#0d6efd",
               }}
             >
-              My Clothing App
+              Outfique
             </NavLink>
             <div className="d-flex justify-content-center">
               <form className="d-flex" role="search" onSubmit={handleSearch}>
